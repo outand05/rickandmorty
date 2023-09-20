@@ -1,15 +1,14 @@
-
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components'
-import Containers from './Components/Containers/Containers';
-import NavBar from './Components/Navbar/NavBar';
 import axios from 'axios';
-import {Routes, Route, useLocation, useNavigate} from 'react-router-dom'
-import About from './Components/Containers/About'
-import Detail from './Components/Containers/Detail';
-import Error from './Components/Error';
-import Form from './Components/Containers/Form';
-import Favorites from './Components/Favorites';
+import styled from 'styled-components';
+import React, {useState, useEffect} from 'react';
+import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
+import Detail from './Client/Containers/Detail';
+import NavBar from './Client/Navbar/NavBar';
+import Form from './Client/Containers/Form';
+import About from './Client/Containers/About';
+import Favorites from './Client/Components/Favorites';
+import Error from './Client/Components/Error';
+import Containers from './Client/Containers/Containers';
 
 
 const StDiv = styled.div`
@@ -94,7 +93,7 @@ export default function App() {
       <Route path='/home' element={<Containers key={characters.id} characters={characters} onClose={onClose} />} />
       <Route path='/about' element={<About/>}/>
       <Route path='/detail/:id' element={<Detail/>}/>
-      <Route path='/favorites' element={<Favorites/>}/>
+      <Route path='/favorites' element={<Favorites onClose={onClose}/>}/>
 
     
     </Routes>
