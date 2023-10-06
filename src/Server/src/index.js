@@ -2,6 +2,7 @@ const express = require('express')
 const server = express()
 const morgan = require('morgan')
 const router = require("./routes/index")
+const { conn } = require('./DB_connection')
 
 server.use(express.json())
 server.use(morgan("dev"))
@@ -20,7 +21,10 @@ server.use((req, res, next) => {
   next();
 });
 
+conn.sync({force:true}).then(()=>{
+  server.listen(3001, () => {
+    
+    console.log('Server raised in port: 3001');
+  })
 
-server.listen(3001, () => {
-  console.log('Server raised in port: 3001');
 })
